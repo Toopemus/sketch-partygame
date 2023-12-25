@@ -1,13 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
-import GameRoundView from './src/GameRoundView';
-import GatherPlayersView from './src/GatherPlayersView';
+import GameManager from './src/GameManager';
 
 const App = () => {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <GatherPlayersView />
+      <GameManager />
     </View>
   );
 }

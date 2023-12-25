@@ -13,7 +13,7 @@ const getRandomWord = (words) => {
   return words[randomIndex];
 }
 
-const GameRoundView = () => {
+const GameRoundView = ({ gameState, setGameState, handleNextPhase }) => {
   const [word, setWord] = useState(getRandomWord(gameWords));
   const [players, setPlayers] = useState([
     {
