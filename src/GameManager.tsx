@@ -27,6 +27,8 @@ const GameManager = () => {
    * Handles setting the correct game phase
    */
   const handleNextPhase = () => {
+    // TODO: proper logic, phases should be:
+    // GatherPlayers -> GameRound -> AddScores -> back to GameRound
     setCurrentPhase(currentPhase + 1)
   }
 
