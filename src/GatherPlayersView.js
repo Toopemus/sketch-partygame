@@ -8,11 +8,26 @@ const GatherPlayersView = ({ gameState, setGameState, handleNextPhase }) => {
     setNameInput(event.nativeEvent.text)
   }
 
+  const handleAddPlayer = () => {
+    if (nameInput) {
+      setGameState({
+        ...gameState,
+        players: [
+          ...gameState.players,
+          { name: nameInput }
+        ]
+      })
+      setNameInput("")
+    }
+  }
+
   return (
     <View>
       <Text>Jelou</Text>
-      <TextInput onChange={handlePlayerInput} />
-      <Button title="lisää" />
+      <TextInput value={nameInput} onChange={handlePlayerInput} />
+      <Button title="lisää"
+        onPress={handleAddPlayer}
+      />
       <Button title="seuraava"
         onPress={handleNextPhase}
       />
