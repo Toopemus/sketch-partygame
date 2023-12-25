@@ -1,7 +1,13 @@
 import { useState } from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
+import { Player } from './types/Player';
 
-const RevealWordView = ({ word, player, handleNextPlayer }) => {
+interface RevealWordViewProps {
+  word: string,
+  player: Player,
+  handleNextPlayer: () => void
+}
+const RevealWordView = ({ word, player, handleNextPlayer }: RevealWordViewProps) => {
   const [revealWord, setRevealWord] = useState(false);
 
   const handleNextPress = () => {

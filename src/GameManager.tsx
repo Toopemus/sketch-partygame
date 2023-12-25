@@ -1,17 +1,23 @@
 import GatherPlayersView from "./GatherPlayersView"
 import GameRoundView from "./GameRoundView"
 import { useState } from "react"
+import { GameState } from "./types/GameState"
 
+export interface PhaseComponentProps {
+  gameState: GameState,
+  setGameState: React.Dispatch<React.SetStateAction<GameState>>,
+  handleNextPhase: () => void
+}
 /*
  * Handles game state and returns the current phase
  */
 const GameManager = () => {
-  const [gameState, setGameState] = useState({
-    roundNumber: 0,
+  const [gameState, setGameState] = useState<GameState>({
+    round: 0,
     players: []
   })
 
-  const [currentPhase, setCurrentPhase] = useState(0)
+  const [currentPhase, setCurrentPhase] = useState<number>(0)
   const phases = [
     GatherPlayersView,
     GameRoundView

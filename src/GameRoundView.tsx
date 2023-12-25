@@ -1,6 +1,7 @@
 import { StyleSheet, View } from 'react-native';
 import RevealWordView from './RevealWordView';
 import { useState } from 'react';
+import { PhaseComponentProps } from './GameManager';
 
 const gameWords = [
   'kaurapuuro',
@@ -8,25 +9,28 @@ const gameWords = [
   'kynttilä'
 ];
 
-const getRandomWord = (words) => {
+const getRandomWord = (words: string[]) => {
   const randomIndex = Math.floor(Math.random() * words.length);
   return words[randomIndex];
 }
 
-const GameRoundView = ({ gameState, setGameState, handleNextPhase }) => {
+const GameRoundView = ({ gameState, setGameState, handleNextPhase }: PhaseComponentProps) => {
   const [word, setWord] = useState(getRandomWord(gameWords));
   const [players, setPlayers] = useState([
     {
       isImpostor: true,
       name: 'Roope',
+      score: 0
     },
     {
       isImpostor: false,
       name: 'Toope',
+      score: 0
     },
     {
       isImpostor: false,
       name: 'Poope',
+      score: 0
     }
   ]);
   const [currPlayerIndex, setCurrPlayerIndex] = useState(0);

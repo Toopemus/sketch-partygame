@@ -1,12 +1,9 @@
 import { Button, Text, TextInput, View } from "react-native";
 import { useState } from "react";
+import { PhaseComponentProps } from "./GameManager";
 
-const GatherPlayersView = ({ gameState, setGameState, handleNextPhase }) => {
+const GatherPlayersView = ({ gameState, setGameState, handleNextPhase }: PhaseComponentProps) => {
   const [nameInput, setNameInput] = useState("")
-
-  const handlePlayerInput = (event) => {
-    setNameInput(event.nativeEvent.text)
-  }
 
   const handleAddPlayer = () => {
     if (nameInput) {
@@ -14,7 +11,11 @@ const GatherPlayersView = ({ gameState, setGameState, handleNextPhase }) => {
         ...gameState,
         players: [
           ...gameState.players,
-          { name: nameInput }
+          {
+            name: nameInput,
+            score: 0,
+            isImpostor: false
+          }
         ]
       })
       setNameInput("")
@@ -24,7 +25,7 @@ const GatherPlayersView = ({ gameState, setGameState, handleNextPhase }) => {
   return (
     <View>
       <Text>Jelou</Text>
-      <TextInput value={nameInput} onChange={handlePlayerInput} />
+      <TextInput value={nameInput} onChangeText={text => setNameInput(text)} />
       <Button title="lisää"
         onPress={handleAddPlayer}
       />
