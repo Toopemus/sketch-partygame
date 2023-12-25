@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
-import { SafeAreaView, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import GameManager from './src/GameManager';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const App = () => {
   return (
