@@ -29,6 +29,19 @@ const GameManager = () => {
     component: GatherPlayersView
   })
 
+  const setRandomImpostor = () => {
+    let tempPlayers = gameState.players
+    const randomIndex = Math.floor(Math.random() * tempPlayers.length)
+    const newImpostor = tempPlayers[randomIndex]
+
+    tempPlayers[randomIndex] = { ...newImpostor, isImpostor: true }
+
+    setGameState({
+      ...gameState,
+      players: tempPlayers
+    })
+  }
+
   /*
    * Handles setting the correct game phase
    * GatherPlayers -> GameRound -> AddScores -> back to GameRound
@@ -36,6 +49,7 @@ const GameManager = () => {
   const handleNextPhase = () => {
     switch (currentPhase.phase) {
       case GamePhase.GatherPlayers:
+        setRandomImpostor()
         setCurrentPhase({
           phase: GamePhase.GameRound,
           component: GameRoundView
