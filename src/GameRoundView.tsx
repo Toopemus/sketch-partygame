@@ -1,8 +1,8 @@
 import { StyleSheet, View } from 'react-native';
 import RevealWordView from './RevealWordView';
 import { useState } from 'react';
-import { PhaseComponentProps } from './GameManager';
 import { Player } from './types/Player';
+import { PhaseComponentProps } from './types/PhaseComponentProps';
 
 const gameWords = [
   'kaurapuuro',
@@ -17,7 +17,7 @@ const getRandomWord = (words: string[]) => {
 }
 
 const GameRoundView = ({ gameState, setGameState, handleNextPhase }: PhaseComponentProps) => {
-  const [word, setWord] = useState(getRandomWord(gameWords)); // TODO: does this have to use useState?
+  const [word, setWord] = useState(getRandomWord(gameWords));
   const [currPlayerIndex, setCurrPlayerIndex] = useState(0);
 
   const handleNextPlayer = () => {

@@ -1,6 +1,6 @@
 import { Button, Text, TextInput, View } from "react-native";
 import { useState } from "react";
-import { PhaseComponentProps } from "./GameManager";
+import { PhaseComponentProps } from "./types/PhaseComponentProps";
 
 const GatherPlayersView = ({ gameState, setGameState, handleNextPhase }: PhaseComponentProps) => {
   const [nameInput, setNameInput] = useState("")

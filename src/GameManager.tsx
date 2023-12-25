@@ -2,12 +2,19 @@ import GatherPlayersView from "./GatherPlayersView"
 import GameRoundView from "./GameRoundView"
 import { useState } from "react"
 import { GameState } from "./types/GameState"
+import { PhaseComponentProps } from "./types/PhaseComponentProps"
 
-export interface PhaseComponentProps {
-  gameState: GameState,
-  setGameState: React.Dispatch<React.SetStateAction<GameState>>,
-  handleNextPhase: () => void
+enum GamePhase {
+  GatherPlayers,
+  GameRound,
+  AddScores,
 }
+
+type CurrentPhase = {
+  phase: GamePhase,
+  component: ({}: PhaseComponentProps) => React.JSX.Element,
+}
+
 /*
  * Handles game state and returns the current phase
  */
@@ -17,22 +24,33 @@ const GameManager = () => {
     players: []
   })
 
-  const [currentPhase, setCurrentPhase] = useState<number>(0)
-  const phases = [
-    GatherPlayersView,
-    GameRoundView
-  ]
+  const [currentPhase, setCurrentPhase] = useState<CurrentPhase>({
+    phase: GamePhase.GatherPlayers,
+    component: GatherPlayersView
+  })
 
   /*
    * Handles setting the correct game phase
+   * GatherPlayers -> GameRound -> AddScores -> back to GameRound
    */
   const handleNextPhase = () => {
-    // TODO: proper logic, phases should be:
-    // GatherPlayers -> GameRound -> AddScores -> back to GameRound
-    setCurrentPhase(currentPhase + 1)
+    switch (currentPhase.phase) {
+      case GamePhase.GatherPlayers:
+        setCurrentPhase({
+          phase: GamePhase.GameRound,
+          component: GameRoundView
+        })
+        break;
+      case GamePhase.GameRound:
+        break;
+      case GamePhase.AddScores:
+        break;
+      default:
+        break;
+    }
   }
 
-  const PhaseComponent = phases[currentPhase]
+  const PhaseComponent = currentPhase.component
 
   return (
     <PhaseComponent
