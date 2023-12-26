@@ -1,4 +1,4 @@
-import { StyleSheet, View } from 'react-native';
+import { Button, StyleSheet, Text, View } from 'react-native';
 import RevealWordView from './RevealWordView';
 import { useState } from 'react';
 import { Player } from './types/Player';
@@ -16,18 +16,39 @@ const getRandomWord = (words: string[]) => {
   return words[randomIndex];
 }
 
-const GameRoundView = ({ gameState, setGameState, handleNextPhase }: PhaseComponentProps) => {
-  const [word, setWord] = useState(getRandomWord(gameWords));
+const GameRoundView = ({ gameState, handleNextPhase }: PhaseComponentProps) => {
+  const [word, _] = useState(getRandomWord(gameWords));
   const [currPlayerIndex, setCurrPlayerIndex] = useState(0);
+  const [playRound, setPlayRound] = useState(false);
 
   const handleNextPlayer = () => {
-    setCurrPlayerIndex(currPlayerIndex + 1);
+    const nextIndex = currPlayerIndex + 1;
+    if (nextIndex >= gameState.players.length) {
+      setPlayRound(true);
+    } else {
+      setCurrPlayerIndex(currPlayerIndex + 1);
+    }
   }
 
   const getCurrentPlayer = (): Player => {
     return gameState.players[currPlayerIndex]
   }
 
+  /*
+   * people know the word and the impostor has been chosen,
+   * app gets put down and people begin drawing
+   * TODO: maybe a adjustable timer to determine when the round should end?
+  */
+  if (playRound) {
+    return (
+      <View style={styles.container}>
+        <Text>Tsädäm, voitte nyt pelata kierroksen</Text>
+        <Button title="lopeta kierros" onPress={handleNextPhase}/>
+      </View>
+    );
+  }
+
+  // app goes around the table and people are shown the word
   return (
     <View style={styles.container}>
       <RevealWordView word={word}

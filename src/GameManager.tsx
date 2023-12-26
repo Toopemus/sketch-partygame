@@ -3,6 +3,7 @@ import GameRoundView from "./GameRoundView"
 import { useState } from "react"
 import { GameState } from "./types/GameState"
 import { PhaseComponentProps } from "./types/PhaseComponentProps"
+import AddScoresView from "./AddScoresView"
 
 enum GamePhase {
   GatherPlayers,
@@ -56,6 +57,10 @@ const GameManager = () => {
         })
         break;
       case GamePhase.GameRound:
+        setCurrentPhase({
+          phase: GamePhase.AddScores,
+          component: AddScoresView
+        })
         break;
       case GamePhase.AddScores:
         break;
