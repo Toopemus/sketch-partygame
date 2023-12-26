@@ -1,14 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet } from 'react-native';
 import GameManager from './src/GameManager';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 const App = () => {
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar style="auto" />
-      <GameManager />
-    </SafeAreaView >
+    <SafeAreaProvider>
+      <SafeAreaView style={styles.container}>
+        <StatusBar style="auto" />
+        <GameManager />
+      </SafeAreaView >
+    </SafeAreaProvider>
   );
 }
 
