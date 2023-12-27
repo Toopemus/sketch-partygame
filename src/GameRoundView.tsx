@@ -1,4 +1,4 @@
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Button, Pressable, StyleSheet, Text, View } from 'react-native';
 import RevealWordView from './RevealWordView';
 import { useState } from 'react';
 import { Player } from './types/Player';
@@ -37,7 +37,11 @@ const GameRoundView = ({ gameState, handleNextPhase }: PhaseComponentProps) => {
     return (
       <View style={styles.container}>
         <Text>Tsädäm, voitte nyt pelata kierroksen</Text>
-        <Button title="lopeta kierros" onPress={handleNextPhase}/>
+        <Pressable
+          onPress={handleNextPhase}
+          style={[styles.boxedElement, styles.endRoundButton]}
+        ><Text>Lopeta kierros</Text>
+        </Pressable>
       </View>
     );
   }
@@ -56,11 +60,24 @@ const GameRoundView = ({ gameState, handleNextPhase }: PhaseComponentProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    height: "100%",
+    justifyContent: "center",
   },
-});
+  boxedElement: {
+    borderWidth: 3,
+    shadowColor: "#000000",
+    shadowOffset: {
+      width: 5,
+      height: 5
+    },
+    shadowOpacity: 1,
+    shadowRadius: 0,
+  },
+  endRoundButton: {
+    padding: 7,
+    marginVertical: 5,
+    backgroundColor: "#00ffff",
+  },
+})
 
 export default GameRoundView;

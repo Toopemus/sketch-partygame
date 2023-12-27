@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Button, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Player } from './types/Player';
 import { GameState } from './types/GameState';
 
@@ -19,41 +19,52 @@ const RevealWordView = ({ word, player, gameState, handleNextPlayer }: RevealWor
 
   if (!revealWord) { // The word is still hidden
     return (
-      <View style={styles.container}>
+      <View>
         <Text>Hei, {player.name}!</Text>
-        <Button
+        <Pressable
           onPress={() => setRevealWord(true)}
-          title='paljasta sana' />
+          style={[styles.boxedElement, styles.revealWordButton]}
+        ><Text>Paljasta sana</Text>
+        </Pressable>
       </View>
     )
   }
 
-  if (gameState.impostor === player.name) {
-    return (
-      <View style={styles.container}>
-        <Text>{player.name}, olet huijari!</Text>
-        <Button title='seuraava'
-          onPress={handleNextPress}
-        />
-      </View>
-    );
-  }
   return (
-    <View style={styles.container}>
-      <Text>{player.name}, sanasi on {word}</Text>
-      <Button title='seuraava'
+    <View>
+      { gameState.impostor === player.name
+        ? <Text>{player.name}, olet huijari!</Text>
+        : <Text>{player.name}, sanasi on {word}</Text>
+      }
+      <Pressable
         onPress={handleNextPress}
-      />
+        style={[styles.boxedElement, styles.nextPlayerButton]}
+      ><Text>Seuraava</Text>
+      </Pressable>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  boxedElement: {
+    borderWidth: 3,
+    shadowColor: "#000000",
+    shadowOffset: {
+      width: 5,
+      height: 5
+    },
+    shadowOpacity: 1,
+    shadowRadius: 0,
+  },
+  revealWordButton: {
+    padding: 7,
+    marginVertical: 5,
+    backgroundColor: "#ffff00",
+  },
+  nextPlayerButton: {
+    padding: 7,
+    marginVertical: 5,
+    backgroundColor: "#00ff00",
   },
 });
 
