@@ -39,7 +39,7 @@ const GatherPlayersView = ({ gameState, setGameState, handleNextPhase }: PhaseCo
         <Pressable
           onPress={() => handleRemovePlayer(item.name)}
           style={[styles.boxedElement, styles.rowButton, { backgroundColor: "#ff0000" }]}
-        ><FontAwesome name="close" color="#ffffff" size={16} />
+        ><FontAwesome name="close" color="#000" size={16} />
         </Pressable>
       </View>
     )
@@ -60,7 +60,7 @@ const GatherPlayersView = ({ gameState, setGameState, handleNextPhase }: PhaseCo
         />
         <Pressable onPress={handleAddPlayer}
           style={[styles.boxedElement, styles.rowButton, { backgroundColor: "#00ff00" }]}
-        ><FontAwesome name="plus" color="#000000" size={16} />
+        ><FontAwesome name="plus" color="#000" size={16} />
         </Pressable>
       </View>
       <Pressable onPress={handleNextPhase}

@@ -1,4 +1,4 @@
-import { Button, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import RevealWordView from './RevealWordView';
 import { useState } from 'react';
 import { Player } from './types/Player';

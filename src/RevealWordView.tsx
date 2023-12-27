@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { Player } from './types/Player';
 import { GameState } from './types/GameState';
 
