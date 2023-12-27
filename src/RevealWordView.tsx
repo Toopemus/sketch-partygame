@@ -1,13 +1,15 @@
 import { useState } from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
 import { Player } from './types/Player';
+import { GameState } from './types/GameState';
 
 interface RevealWordViewProps {
   word: string,
   player: Player,
+  gameState: GameState,
   handleNextPlayer: () => void
 }
-const RevealWordView = ({ word, player, handleNextPlayer }: RevealWordViewProps) => {
+const RevealWordView = ({ word, player, gameState, handleNextPlayer }: RevealWordViewProps) => {
   const [revealWord, setRevealWord] = useState(false);
 
   const handleNextPress = () => {
@@ -26,7 +28,7 @@ const RevealWordView = ({ word, player, handleNextPlayer }: RevealWordViewProps)
     )
   }
 
-  if (player.isImpostor) {
+  if (gameState.impostor === player.name) {
     return (
       <View style={styles.container}>
         <Text>{player.name}, olet huijari!</Text>
@@ -35,17 +37,15 @@ const RevealWordView = ({ word, player, handleNextPlayer }: RevealWordViewProps)
         />
       </View>
     );
-  } else {
-    return (
-      <View style={styles.container}>
-        <Text>{player.name}, sanasi on {word}</Text>
-        <Button title='seuraava'
-          onPress={handleNextPress}
-        />
-      </View>
-    );
   }
-
+  return (
+    <View style={styles.container}>
+      <Text>{player.name}, sanasi on {word}</Text>
+      <Button title='seuraava'
+        onPress={handleNextPress}
+      />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

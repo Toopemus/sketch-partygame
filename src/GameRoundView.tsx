@@ -53,6 +53,7 @@ const GameRoundView = ({ gameState, handleNextPhase }: PhaseComponentProps) => {
     <View style={styles.container}>
       <RevealWordView word={word}
         player={getCurrentPlayer()}
+        gameState={gameState}
         handleNextPlayer={handleNextPlayer}
       />
     </View>

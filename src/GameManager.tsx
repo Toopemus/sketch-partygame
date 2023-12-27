@@ -22,7 +22,8 @@ type CurrentPhase = {
 const GameManager = () => {
   const [gameState, setGameState] = useState<GameState>({
     round: 0,
-    players: []
+    players: [],
+    impostor: ""
   })
 
   const [currentPhase, setCurrentPhase] = useState<CurrentPhase>({
@@ -31,15 +32,12 @@ const GameManager = () => {
   })
 
   const setRandomImpostor = () => {
-    let tempPlayers = gameState.players
-    const randomIndex = Math.floor(Math.random() * tempPlayers.length)
-    const newImpostor = tempPlayers[randomIndex]
-
-    tempPlayers[randomIndex] = { ...newImpostor, isImpostor: true }
+    const randomIndex = Math.floor(Math.random() * gameState.players.length)
+    const newImpostor = gameState.players[randomIndex].name
 
     setGameState({
       ...gameState,
-      players: tempPlayers
+      impostor: newImpostor
     })
   }
 
@@ -63,6 +61,7 @@ const GameManager = () => {
         })
         break;
       case GamePhase.AddScores:
+        setRandomImpostor()
         setCurrentPhase({
           phase: GamePhase.GameRound,
           component: GameRoundView
