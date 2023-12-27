@@ -3,13 +3,7 @@ import RevealWordView from './RevealWordView';
 import { useState } from 'react';
 import { Player } from './types/Player';
 import { PhaseComponentProps } from './types/PhaseComponentProps';
-
-const gameWords = [
-  'kaurapuuro',
-  'kattila',
-  'kynttilä',
-  'formula',
-];
+import words from '../assets/words.json'
 
 const getRandomWord = (words: string[]) => {
   const randomIndex = Math.floor(Math.random() * words.length);
@@ -17,7 +11,7 @@ const getRandomWord = (words: string[]) => {
 }
 
 const GameRoundView = ({ gameState, handleNextPhase }: PhaseComponentProps) => {
-  const [word, _] = useState(getRandomWord(gameWords));
+  const [word, _] = useState(getRandomWord(words.words));
   const [currPlayerIndex, setCurrPlayerIndex] = useState(0);
   const [playRound, setPlayRound] = useState(false);
 
