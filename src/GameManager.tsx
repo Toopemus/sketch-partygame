@@ -63,6 +63,10 @@ const GameManager = () => {
         })
         break;
       case GamePhase.AddScores:
+        setCurrentPhase({
+          phase: GamePhase.GameRound,
+          component: GameRoundView
+        })
         break;
       default:
         break;
