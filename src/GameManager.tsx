@@ -4,6 +4,7 @@ import { useState } from "react"
 import { GameState } from "./types/GameState"
 import { PhaseComponentProps } from "./types/PhaseComponentProps"
 import AddScoresView from "./AddScoresView"
+import { StyleSheet, View } from "react-native"
 
 enum GamePhase {
   GatherPlayers,
@@ -75,12 +76,20 @@ const GameManager = () => {
   const PhaseComponent = currentPhase.component
 
   return (
-    <PhaseComponent
-      gameState={gameState}
-      setGameState={setGameState}
-      handleNextPhase={handleNextPhase}
-    />
+    <View style={styles.container}>
+      <PhaseComponent
+        gameState={gameState}
+        setGameState={setGameState}
+        handleNextPhase={handleNextPhase}
+      />
+    </View>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 20
+  }
+});
 
 export default GameManager
