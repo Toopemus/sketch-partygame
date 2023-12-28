@@ -3,7 +3,8 @@ import { StyleSheet } from "react-native"
 const themeStyles = StyleSheet.create({
   boxedElement: {
     borderWidth: 3,
-    shadowColor: "#0c0c0c",
+    borderColor: "#090C02",
+    shadowColor: "#090C02",
     shadowOffset: {
       width: 5,
       height: 5
@@ -21,7 +22,7 @@ const themeStyles = StyleSheet.create({
     backgroundColor: "#eee5e5",
   },
   black: {
-    backgroundColor: "#0c0c0c",
+    backgroundColor: "#090C02",
   },
   red: {
     backgroundColor: "#f52c29",

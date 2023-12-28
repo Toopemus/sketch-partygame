@@ -67,14 +67,13 @@ const MenuView = ({ handleNextPhase }: PhaseComponentProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    height: "100%",
-    justifyContent: "center",
+    flex: 1,
     alignItems: "center",
   },
   mainTitle: {
     fontFamily: "Super-Reduce",
     fontSize: 72,
-    color: "#0c0c0c",
+    color: "#090C02",
     textAlign: "center",
   },
   button: {
@@ -83,7 +82,6 @@ const styles = StyleSheet.create({
     marginVertical: 5,
   },
   rulesModal: {
-    width: "90%",
     position: "absolute",
     padding: 10,
     justifyContent: "space-between",

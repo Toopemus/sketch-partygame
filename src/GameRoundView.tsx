@@ -67,8 +67,7 @@ const GameRoundView = ({ gameState, handleNextPhase }: PhaseComponentProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    height: "100%",
-    justifyContent: "center",
+    flex: 1,
   },
   button: {
     padding: 7,

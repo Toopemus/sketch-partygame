@@ -100,7 +100,9 @@ const GameManager = () => {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20
+    flex: 1,
+    padding: 20,
+    marginTop: "20%",
   }
 });
 
