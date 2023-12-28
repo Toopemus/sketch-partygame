@@ -34,14 +34,17 @@ const GameManager = () => {
     component: MenuView
   })
 
-  const setRandomImpostor = () => {
+  const setRandomImpostor = (): GameState => {
     const randomIndex = Math.floor(Math.random() * gameState.players.length)
     const newImpostor = gameState.players[randomIndex].name
 
-    setGameState({
+    const newState = {
       ...gameState,
       impostor: newImpostor
-    })
+    }
+    setGameState(newState)
+
+    return newState // workaround when there's multiple setState calls in a row
   }
 
   /*
@@ -70,9 +73,9 @@ const GameManager = () => {
         })
         break;
       case GamePhase.AddScores:
-        setRandomImpostor()
+        const newState = setRandomImpostor()
         setGameState({
-          ...gameState,
+          ...newState,
           round: gameState.round + 1
         })
         setCurrentPhase({
