@@ -11,6 +11,12 @@ const themeStyles = StyleSheet.create({
     shadowOpacity: 1,
     shadowRadius: 0,
   },
+  header: {
+    fontWeight: "bold",
+  },
+  fontLg: {
+    fontSize: 16,
+  },
   white: {
     backgroundColor: "#eee5e5",
   },

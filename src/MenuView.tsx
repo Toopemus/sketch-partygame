@@ -10,22 +10,32 @@ const MenuView = ({ handleNextPhase }: PhaseComponentProps) => {
     return (
       <View style={[themeStyles.boxedElement, themeStyles.white, styles.rulesModal]}>
         <View>
-          <Text>Valmistelu</Text>
-          <Text>- 3-6 pelaajaa</Text>
-          <Text>- Kynä ja paperia</Text>
-          <Text style={styles.subHeader}>Pelin kulku</Text>
-          <Text>- Pelaajille jaetaan piirrettäväksi sana</Text>
-          <Text>- Yksi pelaajista määrätään salaa huijariksi</Text>
-          <Text>- Huijari ei tiedä sanaa</Text>
-          <Text>- Pelaajat piirtävät annettua sanaa 'viiva' kerrallaan</Text>
-          <Text style={styles.subHeader}>Tavoite</Text>
-          <Text>- Huijari pyrkii olemaan paljastumatta</Text>
-          <Text>- Pelaajat yrittävät tunnistaa huijarin</Text>
-          <Text style={styles.subHeader}>Vuoron jälkeen</Text>
-          <Text>- Pelaajat osoittavat sitä, kenet luulevat huijariksi</Text>
-          <Text style={styles.subHeader}>Pisteet</Text>
-          <Text>- Tunnistamalla huijarin saa yhden pisteen</Text>
-          <Text>- Huijari saa pisteen jokaisesta huijatusta pelaajasta</Text>
+          <Text style={[themeStyles.header]}>Valmistelu</Text>
+          <View style={styles.list}>
+            <Text>- 3-6 pelaajaa</Text>
+            <Text>- Kynä ja paperia</Text>
+          </View>
+          <Text style={[themeStyles.header]}>Pelin kulku</Text>
+          <View style={styles.list}>
+            <Text>- Pelaajille jaetaan piirrettäväksi sana</Text>
+            <Text>- Yksi pelaajista määrätään salaa huijariksi</Text>
+            <Text>- Huijari ei tiedä sanaa</Text>
+            <Text>- Pelaajat piirtävät annettua sanaa 'viiva' kerrallaan</Text>
+          </View>
+          <Text style={[themeStyles.header]}>Tavoite</Text>
+          <View style={styles.list}>
+            <Text>- Huijari pyrkii olemaan paljastumatta</Text>
+            <Text>- Pelaajat yrittävät tunnistaa huijarin</Text>
+          </View>
+          <Text style={[themeStyles.header]}>Vuoron jälkeen</Text>
+          <View style={styles.list}>
+            <Text>- Pelaajat osoittavat sitä, kenet luulevat huijariksi</Text>
+          </View>
+          <Text style={[themeStyles.header]}>Pisteet</Text>
+          <View style={styles.list}>
+            <Text>- Tunnistamalla huijarin saa yhden pisteen</Text>
+            <Text>- Huijari saa pisteen jokaisesta huijatusta pelaajasta</Text>
+          </View>
         </View>
         <Pressable
           onPress={() => setShowRules(false)}
@@ -50,7 +60,7 @@ const MenuView = ({ handleNextPhase }: PhaseComponentProps) => {
       ><Text>Säännöt</Text>
       </Pressable>
 
-      { showRules ? <RulesView /> : null }
+      {showRules ? <RulesView /> : null}
     </View>
   )
 }
@@ -73,14 +83,13 @@ const styles = StyleSheet.create({
     marginVertical: 5,
   },
   rulesModal: {
-    height: "70%",
     width: "90%",
     position: "absolute",
     padding: 10,
     justifyContent: "space-between",
   },
-  subHeader: {
-    marginTop: 10,
+  list: {
+    marginBottom: 10,
   },
 })
 

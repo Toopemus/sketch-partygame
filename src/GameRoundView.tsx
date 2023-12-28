@@ -37,6 +37,9 @@ const GameRoundView = ({ gameState, handleNextPhase }: PhaseComponentProps) => {
   if (playRound) {
     return (
       <View style={styles.container}>
+        <Text style={[themeStyles.header, themeStyles.fontLg]}>
+          Kierros {gameState.round}
+        </Text>
         <Text>Tsädäm, voitte nyt pelata kierroksen</Text>
         <Pressable
           onPress={handleNextPhase}
@@ -50,6 +53,9 @@ const GameRoundView = ({ gameState, handleNextPhase }: PhaseComponentProps) => {
   // app goes around the table and people are shown the word
   return (
     <View style={styles.container}>
+      <Text style={[themeStyles.header, themeStyles.fontLg]}>
+        Kierros {gameState.round}
+      </Text>
       <RevealWordView word={word}
         player={getCurrentPlayer()}
         gameState={gameState}

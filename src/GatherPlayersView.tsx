@@ -48,7 +48,7 @@ const GatherPlayersView = ({ gameState, setGameState, handleNextPhase }: PhaseCo
 
   return (
     <View>
-      <Text>Pelaajat</Text>
+      <Text style={[themeStyles.header, themeStyles.fontLg]}>Pelaajat</Text>
       {gameState.players.map(player => (
         <PlayerRow key={player.name} item={player} />
       ))}

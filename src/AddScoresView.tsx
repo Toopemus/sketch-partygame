@@ -54,6 +54,7 @@ const AddScoresView = ({ gameState, setGameState, handleNextPhase}: PhaseCompone
 
   return (
     <View>
+      <Text style={[themeStyles.header, themeStyles.fontLg]}>Pisteet</Text>
       {gameState.players.map(player => (
         <PlayerRow key={player.name} item={player} />
       ))}
