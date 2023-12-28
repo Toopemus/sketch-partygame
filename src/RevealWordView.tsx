@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { Player } from './types/Player';
 import { GameState } from './types/GameState';
+import themeStyles from './styles';
 
 interface RevealWordViewProps {
   word: string,
@@ -23,7 +24,7 @@ const RevealWordView = ({ word, player, gameState, handleNextPlayer }: RevealWor
         <Text>Hei, {player.name}!</Text>
         <Pressable
           onPress={() => setRevealWord(true)}
-          style={[styles.boxedElement, styles.revealWordButton]}
+          style={[themeStyles.boxedElement, themeStyles.yellow, styles.button]}
         ><Text>Paljasta sana</Text>
         </Pressable>
       </View>
@@ -38,7 +39,7 @@ const RevealWordView = ({ word, player, gameState, handleNextPlayer }: RevealWor
       }
       <Pressable
         onPress={handleNextPress}
-        style={[styles.boxedElement, styles.nextPlayerButton]}
+        style={[themeStyles.boxedElement, themeStyles.green, styles.button]}
       ><Text>Seuraava</Text>
       </Pressable>
     </View>
@@ -46,26 +47,10 @@ const RevealWordView = ({ word, player, gameState, handleNextPlayer }: RevealWor
 }
 
 const styles = StyleSheet.create({
-  boxedElement: {
-    borderWidth: 3,
-    shadowColor: "#000000",
-    shadowOffset: {
-      width: 5,
-      height: 5
-    },
-    shadowOpacity: 1,
-    shadowRadius: 0,
-  },
-  revealWordButton: {
+  button: {
     padding: 7,
     marginVertical: 5,
-    backgroundColor: "#ffff00",
-  },
-  nextPlayerButton: {
-    padding: 7,
-    marginVertical: 5,
-    backgroundColor: "#00ff00",
-  },
+  }
 });
 
 export default RevealWordView;

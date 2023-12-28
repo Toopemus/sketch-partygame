@@ -1,7 +1,8 @@
-import { Button, Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import { PhaseComponentProps } from "./types/PhaseComponentProps";
 import { Player } from "./types/Player";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import themeStyles from "./styles";
 
 const AddScoresView = ({ gameState, setGameState, handleNextPhase}: PhaseComponentProps) => {
   const increaseScore = (playerName: string) => {
@@ -33,17 +34,17 @@ const AddScoresView = ({ gameState, setGameState, handleNextPhase}: PhaseCompone
       <View>
         <Text>{item.name}</Text>
         <View style={styles.row}>
-          <View style={[styles.boxedElement, styles.rowContent, { backgroundColor: "#ffff00"}]}>
+          <View style={[themeStyles.boxedElement, themeStyles.yellow, styles.rowContent]}>
             <Text>Pisteet: {item.score}</Text>
           </View>
           <Pressable
             onPress={() => decreaseScore(item.name)}
-            style={[styles.boxedElement, styles.rowButton, { backgroundColor: "#ff0000" }]}
+            style={[themeStyles.boxedElement, themeStyles.red, styles.rowButton]}
           ><FontAwesome name="minus" color={"#000"} size={16}/>
           </Pressable>
           <Pressable
             onPress={() => increaseScore(item.name)}
-            style={[styles.boxedElement, styles.rowButton, { backgroundColor: "#00ff00" }]}
+            style={[themeStyles.boxedElement, themeStyles.green, styles.rowButton]}
           ><FontAwesome name="plus" color={"#000"} size={16}/>
           </Pressable>
         </View>
@@ -58,7 +59,7 @@ const AddScoresView = ({ gameState, setGameState, handleNextPhase}: PhaseCompone
       ))}
       <Pressable
         onPress={handleNextPhase}
-        style={[styles.boxedElement, styles.nextRoundButton, { backgroundColor: "#00ffff" }]}
+        style={[themeStyles.boxedElement, themeStyles.cyan, styles.nextRoundButton]}
       ><Text>Seuraava kierros</Text>
       </Pressable>
     </View>
@@ -66,16 +67,6 @@ const AddScoresView = ({ gameState, setGameState, handleNextPhase}: PhaseCompone
 }
 
 const styles = StyleSheet.create({
-  boxedElement: {
-    borderWidth: 3,
-    shadowColor: "#000000",
-    shadowOffset: {
-      width: 5,
-      height: 5
-    },
-    shadowOpacity: 1,
-    shadowRadius: 0,
-  },
   row: {
     flexDirection: "row",
     alignItems: "center",
@@ -96,7 +87,6 @@ const styles = StyleSheet.create({
   nextRoundButton: {
     padding: 7,
     marginVertical: 5,
-    backgroundColor: "#00ffff",
   },
 })
 

@@ -5,8 +5,10 @@ import { GameState } from "./types/GameState"
 import { PhaseComponentProps } from "./types/PhaseComponentProps"
 import AddScoresView from "./AddScoresView"
 import { StyleSheet, View } from "react-native"
+import MenuView from "./MenuView"
 
 enum GamePhase {
+  Menu,
   GatherPlayers,
   GameRound,
   AddScores,
@@ -28,8 +30,8 @@ const GameManager = () => {
   })
 
   const [currentPhase, setCurrentPhase] = useState<CurrentPhase>({
-    phase: GamePhase.GatherPlayers,
-    component: GatherPlayersView
+    phase: GamePhase.Menu,
+    component: MenuView
   })
 
   const setRandomImpostor = () => {
@@ -48,6 +50,12 @@ const GameManager = () => {
    */
   const handleNextPhase = () => {
     switch (currentPhase.phase) {
+      case GamePhase.Menu:
+        setCurrentPhase({
+          phase: GamePhase.GatherPlayers,
+          component: GatherPlayersView
+        })
+        break;
       case GamePhase.GatherPlayers:
         setRandomImpostor()
         setCurrentPhase({

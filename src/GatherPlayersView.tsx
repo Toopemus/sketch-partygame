@@ -3,6 +3,7 @@ import { useState } from "react";
 import { PhaseComponentProps } from "./types/PhaseComponentProps";
 import { Player } from "./types/Player";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import themeStyles from "./styles";
 
 const GatherPlayersView = ({ gameState, setGameState, handleNextPhase }: PhaseComponentProps) => {
   const [nameInput, setNameInput] = useState("")
@@ -33,12 +34,12 @@ const GatherPlayersView = ({ gameState, setGameState, handleNextPhase }: PhaseCo
   const PlayerRow = ({ item }: { item: Player }) => {
     return (
       <View style={styles.row}>
-        <View style={[styles.boxedElement, styles.rowContent, { backgroundColor: "#ffff00" }]}>
+        <View style={[themeStyles.boxedElement, themeStyles.yellow, styles.rowContent]}>
           <Text>{item.name}</Text>
         </View>
         <Pressable
           onPress={() => handleRemovePlayer(item.name)}
-          style={[styles.boxedElement, styles.rowButton, { backgroundColor: "#ff0000" }]}
+          style={[themeStyles.boxedElement, themeStyles.red, styles.rowButton]}
         ><FontAwesome name="close" color="#000" size={16} />
         </Pressable>
       </View>
@@ -51,20 +52,20 @@ const GatherPlayersView = ({ gameState, setGameState, handleNextPhase }: PhaseCo
       {gameState.players.map(player => (
         <PlayerRow key={player.name} item={player} />
       ))}
-      <View style={styles.row}>
+      <View style={[styles.row, { marginTop: 30 }]}>
         <TextInput
           value={nameInput}
           placeholder="Pelaajan nimi"
           onChangeText={text => setNameInput(text)}
-          style={[styles.boxedElement, styles.rowContent, { backgroundColor: "#ffffff" }]}
+          style={[themeStyles.boxedElement, themeStyles.white, styles.rowContent]}
         />
         <Pressable onPress={handleAddPlayer}
-          style={[styles.boxedElement, styles.rowButton, { backgroundColor: "#00ff00" }]}
+          style={[themeStyles.boxedElement, themeStyles.green, styles.rowButton]}
         ><FontAwesome name="plus" color="#000" size={16} />
         </Pressable>
       </View>
       <Pressable onPress={handleNextPhase}
-        style={[styles.boxedElement, styles.nextPhaseButton]}
+        style={[themeStyles.boxedElement, themeStyles.cyan, styles.nextPhaseButton]}
       ><Text>Seuraava</Text>
       </Pressable>
     </View>
@@ -72,16 +73,6 @@ const GatherPlayersView = ({ gameState, setGameState, handleNextPhase }: PhaseCo
 }
 
 const styles = StyleSheet.create({
-  boxedElement: {
-    borderWidth: 3,
-    shadowColor: "#000000",
-    shadowOffset: {
-      width: 5,
-      height: 5
-    },
-    shadowOpacity: 1,
-    shadowRadius: 0,
-  },
   row: {
     flexDirection: "row",
     alignItems: "center",
@@ -101,7 +92,6 @@ const styles = StyleSheet.create({
   nextPhaseButton: {
     padding: 7,
     marginVertical: 5,
-    backgroundColor: "#00ffff",
   },
 })
 

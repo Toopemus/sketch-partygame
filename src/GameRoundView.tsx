@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Player } from './types/Player';
 import { PhaseComponentProps } from './types/PhaseComponentProps';
 import words from '../assets/words.json'
+import themeStyles from './styles';
 
 const getRandomWord = (words: string[]) => {
   const randomIndex = Math.floor(Math.random() * words.length);
@@ -39,7 +40,7 @@ const GameRoundView = ({ gameState, handleNextPhase }: PhaseComponentProps) => {
         <Text>Tsädäm, voitte nyt pelata kierroksen</Text>
         <Pressable
           onPress={handleNextPhase}
-          style={[styles.boxedElement, styles.endRoundButton]}
+          style={[themeStyles.boxedElement, themeStyles.cyan, styles.button]}
         ><Text>Lopeta kierros</Text>
         </Pressable>
       </View>
@@ -63,20 +64,9 @@ const styles = StyleSheet.create({
     height: "100%",
     justifyContent: "center",
   },
-  boxedElement: {
-    borderWidth: 3,
-    shadowColor: "#000000",
-    shadowOffset: {
-      width: 5,
-      height: 5
-    },
-    shadowOpacity: 1,
-    shadowRadius: 0,
-  },
-  endRoundButton: {
+  button: {
     padding: 7,
     marginVertical: 5,
-    backgroundColor: "#00ffff",
   },
 })
 
