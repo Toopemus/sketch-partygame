@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
-import { Player } from './types/Player';
-import { GameState } from './types/GameState';
-import themeStyles from './styles';
+import { Player } from '../types/Player';
+import { GameState } from '../types/GameState';
+import themeStyles from '../styles';
 
 interface RevealWordViewProps {
   word: string,

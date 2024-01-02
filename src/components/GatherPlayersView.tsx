@@ -1,9 +1,9 @@
 import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import { useState } from "react";
-import { PhaseComponentProps } from "./types/PhaseComponentProps";
-import { Player } from "./types/Player";
+import { PhaseComponentProps } from "../types/PhaseComponentProps";
+import { Player } from "../types/Player";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import themeStyles from "./styles";
+import themeStyles from "../styles";
 
 const GatherPlayersView = ({ gameState, setGameState, handleNextPhase }: PhaseComponentProps) => {
   const [nameInput, setNameInput] = useState("")

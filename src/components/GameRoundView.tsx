@@ -1,10 +1,10 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import RevealWordView from './RevealWordView';
 import { useState } from 'react';
-import { Player } from './types/Player';
-import { PhaseComponentProps } from './types/PhaseComponentProps';
-import words from '../assets/words.json'
-import themeStyles from './styles';
+import { Player } from '../types/Player';
+import { PhaseComponentProps } from '../types/PhaseComponentProps';
+import words from '../../assets/words.json'
+import themeStyles from '../styles';
 
 const getRandomWord = (words: string[]) => {
   const randomIndex = Math.floor(Math.random() * words.length);

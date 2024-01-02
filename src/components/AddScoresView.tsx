@@ -1,8 +1,8 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import { PhaseComponentProps } from "./types/PhaseComponentProps";
-import { Player } from "./types/Player";
+import { PhaseComponentProps } from "../types/PhaseComponentProps";
+import { Player } from "../types/Player";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import themeStyles from "./styles";
+import themeStyles from "../styles";
 
 const AddScoresView = ({ gameState, setGameState, handleNextPhase}: PhaseComponentProps) => {
   const increaseScore = (playerName: string) => {

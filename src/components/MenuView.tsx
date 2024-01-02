@@ -1,7 +1,7 @@
 import { Pressable, StyleSheet, Text, View } from "react-native"
-import { PhaseComponentProps } from "./types/PhaseComponentProps"
+import { PhaseComponentProps } from "../types/PhaseComponentProps"
 import { useState } from "react"
-import themeStyles from "./styles"
+import themeStyles from "../styles"
 
 const MenuView = ({ handleNextPhase }: PhaseComponentProps) => {
   const [showRules, setShowRules] = useState(false)

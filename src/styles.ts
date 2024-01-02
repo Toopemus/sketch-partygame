@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native"
+import { StyleSheet } from "react-native";
 
 const themeStyles = StyleSheet.create({
   boxedElement: {
@@ -7,7 +7,7 @@ const themeStyles = StyleSheet.create({
     shadowColor: "#090C02",
     shadowOffset: {
       width: 5,
-      height: 5
+      height: 5,
     },
     shadowOpacity: 1,
     shadowRadius: 0,
@@ -42,6 +42,6 @@ const themeStyles = StyleSheet.create({
   magenta: {
     backgroundColor: "#ff00ff",
   },
-})
+});
 
-export default themeStyles
+export default themeStyles;
