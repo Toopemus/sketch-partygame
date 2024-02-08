@@ -19,3 +19,30 @@ the app randomizes a word for each round. the players can then pass around the p
 where the app then either gives the word, or notifies the player of their status as the impostor. after
 each round the app can be used to manage player scores.
 
+## Development
+
+clone the repository in your preferred location
+
+```bash
+git clone https://github.com/Toopemus/sketch-partygame.git
+```
+
+Install dependencies
+
+```bash
+cd sketch-partygame
+
+npm install
+```
+
+This app uses Expo, so you can either use the Expo app or local emulators for iOS and Android
+
+```bash
+npm run start # Development server
+
+# Or to instantly start an emulator/web version, choose one
+npm run ios
+npm run android
+npm run web
+```
+
